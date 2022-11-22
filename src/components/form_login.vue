@@ -2,13 +2,15 @@
   <div>
     <div>
       <div class="mb-6">
-        <label for="email" class="block mb-2 font-medium">Email</label>
+        <label for="username" class="block mb-2 font-medium"
+          >Nome de usuário</label
+        >
         <input
-          type="email"
-          id="email"
+          type="text"
+          id="username"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="mari_mariana@email.com"
-          v-model="email"
+          placeholder="mari_mariana"
+          v-model="username"
           required="true"
         />
       </div>
@@ -39,7 +41,7 @@ import jwt_decode from "jwt-decode";
 export default {
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
     };
   },
@@ -47,7 +49,7 @@ export default {
     login() {
       axios
         .post("http://localhost:8000/token/", {
-          username: this.email,
+          username: this.username,
           password: this.password,
         })
         .then((response) => {
